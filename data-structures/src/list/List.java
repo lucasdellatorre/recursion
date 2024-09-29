@@ -80,16 +80,22 @@ public class List {
         return exist(data, node.next);
     }
 
-    public int getpos(int val) {
-        first = getpos(val, first);
-        return val;
+    public boolean delete(int val) {
+        Node res = delete(val, first);
+        if (res.data == Integer.MIN_VALUE) {
+            return false;
+        } else {
+            first = res;
+            return true;
+        }
     }
 
-    private Node getpos(int data, Node node) {
+    private Node delete(int data, Node node) {
+        if (node == null) return null;
         if (node.data == data) {
             return node.next;
         }
-        node.next = getpos(data, node.next);
+        node.next = delete(data, node.next);
         return node;
     }
 

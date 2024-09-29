@@ -9,7 +9,9 @@ public class Main {
         ld.insertSorted(10);
         ld.insertSorted(9);
 
-        System.out.println(ld.exist(1));
+
+        System.out.println(ld.delete(10));
+
         ld.print();
     }
 }
