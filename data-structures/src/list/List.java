@@ -157,6 +157,17 @@ public class List {
         return node;
     }
 
+    public void reversePrint() {
+        reversePrint(first);
+        System.out.println( "\n" );
+    }
+
+    private void reversePrint(Node node) {
+        if (node == null) return;
+        reversePrint(node.next);
+        System.out.print( node.data + " " );
+    }
+
     public void print( )  {
         print( first );
         System.out.println( "\n" );
