@@ -7,11 +7,9 @@ public class Main {
 
 
         ld.fill(10);
-        ld.insert(3);
 
-        ld.print();
+        System.out.println(ld.total(1));
 
-        System.out.println(ld.kill(1));
 
         ld.print();
     }

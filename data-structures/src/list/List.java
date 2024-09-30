@@ -128,6 +128,18 @@ public class List {
         return node;
     }
 
+    public int total(int val) {
+        return total(val, first);
+    }
+
+    private int total(int val, Node node) {
+        if (node == null) return 0;
+        if (node.data == val) {
+            return 1 + total(val, node.next);
+        }
+        return total(val, node.next);
+    }
+
     public void print( )  {
         print( first );
         System.out.println( "\n" );
