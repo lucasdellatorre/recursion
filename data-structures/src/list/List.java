@@ -107,6 +107,17 @@ public class List {
         return Math.min(min(node.next), node.data);
     }
 
+    public void fill(int end) {
+        first = fill(end, first);
+    }
+
+    private Node fill(int end, Node node) {
+        if (end == 0) return null;
+        node = new Node(1);
+        node.next = fill(end - 1, node.next);
+        return node;
+    }
+
     public void print( )  {
         print( first );
         System.out.println( "\n" );
