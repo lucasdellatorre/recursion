@@ -82,12 +82,9 @@ public class List {
 
     public boolean delete(int val) {
         Node res = delete(val, first);
-        if (res.data == Integer.MIN_VALUE) {
-            return false;
-        } else {
-            first = res;
-            return true;
-        }
+        if (res == null) return false;
+        first = res;
+        return true;
     }
 
     private Node delete(int data, Node node) {
@@ -97,6 +94,17 @@ public class List {
         }
         node.next = delete(data, node.next);
         return node;
+    }
+
+    public int min() {
+        int res = min(first);
+        if (res == Integer.MAX_VALUE) throw new IllegalArgumentException("empty list");
+        return res;
+    }
+
+    private int min(Node node) {
+        if (node == null) return Integer.MAX_VALUE;
+        return Math.min(min(node.next), node.data);
     }
 
     public void print( )  {
