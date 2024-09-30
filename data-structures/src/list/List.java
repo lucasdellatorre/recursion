@@ -81,10 +81,8 @@ public class List {
     }
 
     public boolean delete(int val) {
-        Node res = delete(val, first);
-        if (res == null) return false;
-        first = res;
-        return true;
+        first = delete(val, first);
+        return first != null;
     }
 
     private Node delete(int data, Node node) {
@@ -115,6 +113,18 @@ public class List {
         if (end == 0) return null;
         node = new Node(1);
         node.next = fill(end - 1, node.next);
+        return node;
+    }
+
+    public boolean kill(int val) {
+        first = kill(val, first);
+        return first != null;
+    }
+
+    private Node kill(int val, Node node) {
+        if (node == null) return null;
+        if (node.data == val) return kill(val, node.next);
+        node.next = kill(val, node.next);
         return node;
     }
 
