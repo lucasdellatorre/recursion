@@ -1,5 +1,9 @@
 package list;
-    // List.java
+
+import java.util.HashSet;
+import java.util.Set;
+
+// List.java
 public class List {
     private Node first;
 
@@ -138,6 +142,19 @@ public class List {
             return 1 + total(val, node.next);
         }
         return total(val, node.next);
+    }
+
+    public void unique() {
+        HashSet<Integer> mem = new HashSet<>();
+        first = unique(first, mem);
+    }
+
+    private Node unique(Node node, HashSet<Integer> mem) {
+        if (node == null) return null;
+        if (mem.contains(node.data)) return unique(node.next, mem);
+        mem.add(node.data);
+        node.next = unique(node.next, mem);
+        return node;
     }
 
     public void print( )  {
