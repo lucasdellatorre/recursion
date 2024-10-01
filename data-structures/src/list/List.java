@@ -173,6 +173,33 @@ public class List {
         return false;
     }
 
+    public List mergeSortedList(List l2) {
+        List newList = new List();
+        mergeSortedList(first, l2.getFirst(), newList);
+        return newList;
+    }
+
+    private void mergeSortedList(Node l1, Node l2, List newList) {
+        if (l1 == null && l2 == null) return;
+        if (l1 == null) {
+            newList.insert(l2.data);
+            mergeSortedList(null, l2.next, newList);
+            return;
+        }
+        if (l2 == null) {
+            newList.insert(l1.data);
+            mergeSortedList(l1.next, null, newList);
+            return;
+        }
+        if (l1.data < l2.data) {
+            newList.insert(l1.data);
+            mergeSortedList(l1.next, l2, newList);
+        } else {
+            newList.insert(l2.data);
+            mergeSortedList(l1, l2.next, newList);
+        }
+    }
+
     public void reversePrint() {
         reversePrint(first);
         System.out.println( "\n" );
