@@ -157,6 +157,22 @@ public class List {
         return node;
     }
 
+
+    public boolean isLinkedListEqual(List l2) {
+        System.out.println(first.data);
+        return isLinkedListEqual(first, l2.getFirst());
+    }
+
+    private boolean isLinkedListEqual(Node l1, Node l2) {
+        if (l1 == null && l2 == null) return true;
+        if (l1 != null && l2 != null) {
+            if (l1.data == l2.data) {
+                return isLinkedListEqual(l1.next, l2.next);
+            }
+        }
+        return false;
+    }
+
     public void reversePrint() {
         reversePrint(first);
         System.out.println( "\n" );
@@ -189,5 +205,9 @@ public class List {
         }
         System.out.println(node.data);
         walk(node.next);
+    }
+
+    public Node getFirst() {
+        return first;
     }
 }
