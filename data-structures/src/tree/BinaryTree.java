@@ -50,8 +50,12 @@ public class BinaryTree {
     }
 
     private int find( Node n, int val ) {
-        // ?????????????????????????
-        return -1;
+        if (n == null) return -1;
+        if (n.data == val) return val;
+        if (val > n.data) {
+            return find(n.right, val);
+        } else {
+            return find(n.left, val);
+        }
     }
-
 }
