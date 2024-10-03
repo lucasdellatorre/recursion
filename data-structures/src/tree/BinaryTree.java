@@ -45,6 +45,10 @@ public class BinaryTree {
         print(n.right);
     }
 
+    public void printTraversal() {
+
+    }
+
     public int find( int val ) {
         return find( root, val );
     }
@@ -57,5 +61,16 @@ public class BinaryTree {
         } else {
             return find(n.left, val);
         }
+    }
+
+
+    public boolean isValidBST() {
+        return isValidBST(root, null, null);
+    }
+
+    private boolean isValidBST(Node node, Integer min, Integer max) {
+        if (node == null) return true;
+        if ((min != null && node.data <= min) || (max != null && node.data >= max)) return false;
+        return isValidBST(node.left, min, node.data) && isValidBST(node.right, node.data, max);
     }
 }
