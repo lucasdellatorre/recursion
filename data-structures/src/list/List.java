@@ -211,6 +211,23 @@ public class List {
         System.out.print( node.data + " " );
     }
 
+    public void reverseList() {
+        first = reverseList(first);
+    }
+
+    private Node reverseList(Node node) {
+        if (node == null || node.next == null) return node;
+       Node newFirst = reverseList(node.next);
+
+        System.out.println("node.data " + node.data);
+
+       node.next.next = node;
+       node.next = null;
+
+        System.out.println("newFirst " +  newFirst.data);
+        return newFirst;
+    }
+
     public void print( )  {
         print( first );
         System.out.println( "\n" );

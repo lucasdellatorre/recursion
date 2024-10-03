@@ -1,16 +1,21 @@
 import list.List;
+import list.Pilha;
 import recursion.Recursion;
+import tree.BinaryTree;
+
+import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-        List ld = new List();
+        BinaryTree btree = new BinaryTree();
 
+        btree.insert(5);
+        btree.insert(7);
+        btree.insert(8);
+        btree.insert(4);
+        btree.insert(6);
 
-        ld.fill(10);
+        btree.print();
 
-        System.out.println(ld.total(1));
-
-
-        ld.print();
     }
 }

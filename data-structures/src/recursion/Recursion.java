@@ -1,5 +1,7 @@
 package recursion;
 
+import list.Pilha;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,5 +31,20 @@ public class Recursion {
             return true;
         }
         return (isListSorted(arr.subList(0, n / 2))) && arr.get(n / 2 - 1) <= arr.get(n / 2) && isListSorted(arr.subList(n / 2, n));
+    }
+
+    public static boolean isBalanced(String s) {
+        Pilha pilha = new Pilha();
+        for (Character c : s.toCharArray()) {
+            if (c == '(') {
+                pilha.push(c);
+            } else if (c == 57) {
+                int value = pilha.pop();
+                System.out.println((int)'9');
+                System.out.println(value);
+                if (value != 57) return false;
+            }
+        }
+        return true;
     }
 }
