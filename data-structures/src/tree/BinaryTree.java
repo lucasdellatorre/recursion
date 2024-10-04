@@ -1,5 +1,8 @@
 package tree;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class BinaryTree {
     private Node root;
 
@@ -46,7 +49,19 @@ public class BinaryTree {
     }
 
     public void printTraversal() {
+        printTraversal(root);
+    }
 
+    private void printTraversal(Node root) {
+        Queue<Node> queue = new LinkedList<>();
+
+        queue.add(root);
+        while (!queue.isEmpty()) {
+            Node curr = queue.poll();
+            System.out.println(curr.data + " ");
+            if (curr.left != null) queue.add(curr.left);
+            if (curr.right != null) queue.add(curr.right);
+        }
     }
 
     public int find( int val ) {
