@@ -106,6 +106,29 @@ public class BinaryTree {
         return numnodos(node.right) + numnodos(node.left) + 1;
     }
 
+    public int pai(int val) {
+        Node res = pai(root, val);
+        return res == null ? -1 : res.data;
+    }
+
+    private Node pai(Node node, int val) {
+        if (node == null) return null;
+        if (node.left != null && node.left.data == val) return node;
+        if (node.right != null && node.right.data == val) return node;
+
+        Node left = pai(node.left, val);
+        if (left != null) return left;
+        return pai(node.right, val);
+    }
+
+    public int soma() {
+        return soma(root);
+    }
+
+    private int soma(Node node) {
+        if (node == null) return 0;
+        return soma(node.left) + soma(node.right) + node.data;
+    }
 
     public boolean isValidBST() {
         return isValidBST(root, null, null);
