@@ -78,6 +78,16 @@ public class BinaryTree {
         }
     }
 
+    public boolean exist(int val) {
+        return exist(val, root);
+    }
+
+    public boolean exist(int val, Node node) {
+        if (root == null) return false;
+        if (root.data == val) return true;
+        return exist(val, node.left) || exist(val, node.right);
+    }
+
 
     public boolean isValidBST() {
         return isValidBST(root, null, null);
