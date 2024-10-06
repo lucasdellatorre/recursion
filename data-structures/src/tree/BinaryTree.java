@@ -97,6 +97,15 @@ public class BinaryTree {
         return Math.max(altura(node.right), altura(node.left)) + 1;
     }
 
+    public int numnodos() {
+        return numnodos(root);
+    }
+
+    private int numnodos(Node node) {
+        if (node == null) return 0;
+        return numnodos(node.right) + numnodos(node.left) + 1;
+    }
+
 
     public boolean isValidBST() {
         return isValidBST(root, null, null);
