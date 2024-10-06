@@ -130,6 +130,16 @@ public class BinaryTree {
         return soma(node.left) + soma(node.right) + node.data;
     }
 
+    public int conta(int val)  {
+        return conta(val, root);
+    }
+
+    private int conta(int val, Node node) {
+        if (node == null) return 0;
+        if (node.data == val) return conta(val, node.left) + conta(val, node.right) + 1;
+        return conta(val, node.left) + conta(val, node.right);
+    }
+
     public boolean isValidBST() {
         return isValidBST(root, null, null);
     }
