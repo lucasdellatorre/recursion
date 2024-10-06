@@ -88,6 +88,15 @@ public class BinaryTree {
         return exist(val, node.left) || exist(val, node.right);
     }
 
+    public int altura() {
+        return altura(root);
+    }
+
+    private int altura(Node node) {
+        if (node == null) return 0;
+        return Math.max(altura(node.right), altura(node.left)) + 1;
+    }
+
 
     public boolean isValidBST() {
         return isValidBST(root, null, null);
