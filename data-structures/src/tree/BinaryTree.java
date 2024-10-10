@@ -140,6 +140,26 @@ public class BinaryTree {
         return conta(val, node.left) + conta(val, node.right);
     }
 
+    public int numpares() {
+        return numpares(root);
+    }
+
+    private int numpares(Node node) {
+        if (node == null) return 0;
+        if (node.data % 2 == 0) return numpares(node.left) + numpares(node.right) + 1;
+        return numpares(node.left) + numpares(node.right);
+    }
+
+    public int filhosdir() {
+        return filhosdir(root);
+    }
+
+    private int filhosdir(Node node) {
+        if (node == null) return 0;
+        if (node.right != null) return filhosdir(node.left) + filhosdir(node.right) + 1;
+        return filhosdir(node.left);
+    }
+
     public boolean isValidBST() {
         return isValidBST(root, null, null);
     }
@@ -148,5 +168,41 @@ public class BinaryTree {
         if (node == null) return true;
         if ((min != null && node.data <= min) || (max != null && node.data >= max)) return false;
         return isValidBST(node.left, min, node.data) && isValidBST(node.right, node.data, max);
+    }
+
+    public void emordem() {
+        emordem(root);
+    }
+
+    private void emordem(Node node) {
+        if (node == null) return;
+        emordem(node.left);
+        System.out.println(node.data);
+        emordem(node.right);
+    }
+
+    public void emordemreversa() {
+        emordemreversa(root);
+    }
+
+    private void emordemreversa(Node node) {
+        if (node == null) return;
+        emordemreversa(node.right);
+        System.out.println(node.data);
+        emordemreversa(node.left);
+    }
+
+    public void inverte() {
+        root = inverte(root);
+    }
+
+    private Node inverte(Node node) {
+        if (node == null) return null;
+        Node left = inverte(node.left);
+        Node right = inverte(node.right);
+
+        node.left = right;
+        node.right = left;
+        return node;
     }
 }
