@@ -29,3 +29,9 @@ class Solution:
             queue2.append(stree.right)
 
         return len(queue1) == len(queue2)
+
+    def isSameTreeRec(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
+        if not p and not q: return True
+        if not p or not q: return False
+        if p.val != q.val: return False
+        return self.isSameTreeRec(p.left, q.left) and self.isSameTreeRec(p.right, q.right)
